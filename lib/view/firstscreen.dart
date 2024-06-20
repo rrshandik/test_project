@@ -30,8 +30,8 @@ class _first_screenState extends State<first_screen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("You can Log In"),
-            content: Text("Palindrome is correct!"),
+            title: Text("isPalindrome"),
+            content: Text("You can log in"),
             actions: [
               TextButton(
                 child: Text("OK"),
@@ -48,8 +48,8 @@ class _first_screenState extends State<first_screen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Login Failed"),
-            content: Text("Palindrome is incorrect!"),
+            title: Text("not Palindrome"),
+            content: Text("You can't log in"),
             actions: [
               TextButton(
                 child: Text("OK"),

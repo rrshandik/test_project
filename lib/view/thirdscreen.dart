@@ -4,9 +4,6 @@ import 'package:flutter_suit_question1_dika/bloc/user_bloc.dart';
 import 'package:flutter_suit_question1_dika/bloc/user_event.dart';
 import 'package:flutter_suit_question1_dika/bloc/user_state.dart';
 
-
-
-
 class third_screen extends StatelessWidget {
   const third_screen({super.key});
 
@@ -41,14 +38,30 @@ class third_screen extends StatelessWidget {
                   if (index == state.users.length) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(state.users[index]['avatar']),
+                  return Card(
+                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    title: Text(state.users[index]['first_name'] + ' ' + state.users[index]['last_name']),
-                    subtitle: Text(state.users[index]['email']),
-                    onTap: () => Navigator.pop(
-                        context, state.users[index]['first_name'] + ' ' + state.users[index]['last_name']),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(state.users[index]['avatar']),
+                        radius: 30,
+                      ),
+                      title: Text(
+                        state.users[index]['first_name'] + ' ' + state.users[index]['last_name'],
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                      subtitle: Text(
+                        state.users[index]['email'],
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      ),
+                      trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey[400]),
+                      onTap: () => Navigator.pop(
+                          context, state.users[index]['first_name'] + ' ' + state.users[index]['last_name']),
+                    ),
                   );
                 },
               ),

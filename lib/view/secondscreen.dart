@@ -56,7 +56,8 @@ class _second_screenState extends State<second_screen> {
               selectedUser.isEmpty ? 
               'Selected User' : selectedUser, 
               style: TextStyles.title.copyWith(
-                color: Colors.black))
+                color: Colors.black,
+                fontSize: 30))
                 ,
               ),
 
