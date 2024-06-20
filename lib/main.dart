@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_suit_question1_dika/firstscreen.dart';
+import 'package:flutter_suit_question1_dika/view/firstscreen.dart';
 
 void main() {
   runApp(const MyApp());

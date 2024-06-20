@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_suit_question1_dika/provider/styles.dart';
+import 'package:flutter_suit_question1_dika/view/widget/styles.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_suit_question1_dika/provider/custom_button.dart';
-import 'package:flutter_suit_question1_dika/provider/styles.dart';
-import 'package:flutter_suit_question1_dika/thirdscreen.dart';
+import 'package:flutter_suit_question1_dika/view/widget/custom_button.dart';
+import 'package:flutter_suit_question1_dika/view/widget/styles.dart';
+import 'package:flutter_suit_question1_dika/view/thirdscreen.dart';
 
 class second_screen extends StatefulWidget {
   final String name;

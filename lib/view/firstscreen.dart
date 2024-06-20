@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_suit_question1_dika/provider/custom_button.dart';
-import 'package:flutter_suit_question1_dika/provider/styles.dart';
-import 'package:flutter_suit_question1_dika/secondscreen.dart';
+import 'package:flutter_suit_question1_dika/view/widget/custom_button.dart';
+import 'package:flutter_suit_question1_dika/view/widget/styles.dart';
+import 'package:flutter_suit_question1_dika/view/secondscreen.dart';
 
 class first_screen extends StatefulWidget {
   const first_screen({super.key});
@@ -121,7 +121,8 @@ class _first_screenState extends State<first_screen> {
                   height: 200,
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 30.0),
+              // Spacer(),
             
             TextField(
               controller: _nameController,
