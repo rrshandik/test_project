@@ -14,60 +14,38 @@ class _first_screenState extends State<first_screen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sentenceController = TextEditingController();
 
-  final List<Map<String, String>> _validCredentials = [
-    {"palindrome": "suitmedia"},
-    {"palindrome": "ramadika"},
-    {"palindrome": "mobile"},
-  ];
+  bool _isPalindrome(String str) {
+    String cleanedString = str.replaceAll(RegExp(r'[\W_]+'), '').toLowerCase();
+    String reversedString = cleanedString.split('').reversed.join('');
+    return cleanedString == reversedString;
+  }
 
   void _checkPalindrome() {
     String enteredSentence = _sentenceController.text;
-    bool isPalindrome = _validCredentials.any((credential) =>
-        credential["palindrome"] == enteredSentence.toLowerCase());
+    bool isPalindrome = _isPalindrome(enteredSentence);
 
-    if (isPalindrome) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("isPalindrome"),
-            content: Text("You can log in"),
-            actions: [
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("not Palindrome"),
-            content: Text("You can't log in"),
-            actions: [
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(isPalindrome ? "isPalindrome" : "not Palindrome"),
+          content: Text(isPalindrome ? "You can log in" : "You can't log in"),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  void _nextscreen() {
+  void _nextScreen() {
     String enteredSentence = _sentenceController.text;
-    bool isPalindrome = _validCredentials.any((credential) =>
-        credential["palindrome"] == enteredSentence.toLowerCase());
+    bool isPalindrome = _isPalindrome(enteredSentence);
 
     if (isPalindrome) {
       Navigator.push(
@@ -103,8 +81,10 @@ class _first_screenState extends State<first_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Screen',
-        style: TextStyles.title,),
+        title: Text(
+          'First Screen',
+          style: TextStyles.title,
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -113,28 +93,28 @@ class _first_screenState extends State<first_screen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AnimatedContainer(
-                duration: Duration(seconds: 1), // Durasi animasi
-                child: Image.asset(
-                  'assets/images/user.png',
-                  fit: BoxFit.contain,
-                  width: 200,
-                  height: 200,
-                ),
+              duration: Duration(seconds: 1),
+              child: Image.asset(
+                'assets/images/user.png',
+                fit: BoxFit.contain,
+                width: 200,
+                height: 200,
               ),
-              const SizedBox(height: 30.0),
-              // Spacer(),
-            
+            ),
+            const SizedBox(height: 30.0),
             TextField(
               controller: _nameController,
               style: TextStyles.body.copyWith(color: Colors.black),
               decoration: InputDecoration(
-                hintText: 'Name', hintStyle: TextStyles.light.copyWith(color: Colors.black),
+                hintText: 'Name',
+                hintStyle: TextStyles.light.copyWith(color: Colors.black),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
                     width: 0.5,
                     color: AppColors.red,
                   ),
-                  borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
               ),
             ),
             SizedBox(height: 16),
@@ -142,21 +122,21 @@ class _first_screenState extends State<first_screen> {
               controller: _sentenceController,
               style: TextStyles.body.copyWith(color: Colors.black),
               decoration: InputDecoration(
-                hintText: 'Palindrome', hintStyle: TextStyles.light.copyWith( color: Colors.black),
+                hintText: 'Palindrome',
+                hintStyle: TextStyles.light.copyWith(color: Colors.black),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
                     width: 0.5,
                     color: AppColors.red,
                   ),
-                  borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
               ),
             ),
             SizedBox(height: 16),
             CustomButton(text: 'Check', onPressed: _checkPalindrome),
             SizedBox(height: 16),
-            CustomButton(text: 'Next', onPressed: _nextscreen)
-
-           
+            CustomButton(text: 'Next', onPressed: _nextScreen)
           ],
         ),
       ),
